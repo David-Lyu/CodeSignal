@@ -1,0 +1,1 @@
+the function is given an array that will check to see if it is increasing always, if not you can take one number out and then see if all the numbers are increasing. If so return true, if not return false
