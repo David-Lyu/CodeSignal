@@ -1,22 +1,30 @@
-func removeDupicates(nums []int) int {
+func removeDuplicates(nums []int) int {
 	var count = 0
 	var index = 0
+	var hasDeleted = false
 	for i := 1; i < len(nums); i++ {
+		if i == len(nums)-1 {
+			break
+		}
 		//if same
-		if nums[index] == num[i] {
-			//if count is greater 2 remove index
+		if nums[index] == nums[i] {
 			//increase count
-			if count > 1 {
-				nums[index] = nums[i]
+			if count < 2 {
+				nums[index] = nums[i-1]
 				index++
 			}
 			count++
-			index++
 			continue
+		} else {
+			if count > 1 {
+				nums[index] = nums[i]
+			} else {
+				nums[index] = nums[i-1]
+			}
 		}
-		// need this when index is incremented for count
-		// else nums[index] should equal i-1
-		nums[index] = nums[i]
+
+		count = 0
+		index++
 
 	}
 	return index
