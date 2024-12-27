@@ -1,5 +1,33 @@
 func removeDuplicates(nums []int) int {
 	var count, index = 0, 0
+	var lastNum = nums[0]
+	var hasDeleted, noDelete = false, true
+
+	if len(nums) == 1 {
+		return 1
+	}
+
+	for i := 1; i < len(nums); i++ {
+		if nums[i] == lastNum {
+			count++
+			if count < 2 {
+				index++
+				continue
+			}
+			hasDelete = true
+		} else {
+			count = 0
+		}
+	}
+
+	if noDelete {
+		return len(nums)
+	}
+	return index
+}
+
+func old_2() int {
+	var count, index = 0, 0
 	var hasDeleted = false
 
 	if len(nums) == 1 {
@@ -29,8 +57,8 @@ func removeDuplicates(nums []int) int {
 		return len(nums)
 	}
 	return index
-}
 
+}
 func old_1() int {
 	//var count = 0
 	//var index = 0
