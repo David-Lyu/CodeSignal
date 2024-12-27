@@ -10,13 +10,30 @@ func removeDuplicates(nums []int) int {
 	for i := 1; i < len(nums); i++ {
 		if nums[i] == lastNum {
 			count++
+			if i == len(nums) {
+				nums[index] = nums[i]
+			}
 			if count < 2 {
 				index++
 				continue
 			}
-			hasDelete = true
+
+			hasDeleted = true
+			noDelete = false
 		} else {
 			count = 0
+			lastNum = nums[i]
+			if noDelete {
+				index++
+				continue
+			}
+			if hasDeleted {
+				hasDeleted = false
+				index++
+			}
+
+			nums[index] = lastNum
+			index++
 		}
 	}
 
